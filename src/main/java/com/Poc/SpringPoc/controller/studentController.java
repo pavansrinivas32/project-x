@@ -35,13 +35,15 @@ public class studentController {
 		System.err.println(student);
 		return new ResponseEntity<>(repo.save(student), HttpStatus.CREATED);
 	}
-	//url: http://localhost:1111/api/allstudents
+
+	// url: http://localhost:1111/api/allstudents
 	@GetMapping("/allstudents")
 	public ResponseEntity<List<studentEntity>> getallstudents() {
 		System.err.println(repo.findAll());
 		return new ResponseEntity<>(repo.findAll(), HttpStatus.CREATED);
 	}
-	//url: http://localhost:1111/api/allstudents/3
+
+	// url: http://localhost:1111/api/allstudents/3
 	@GetMapping("/allstudents/{id}")
 	public ResponseEntity<studentEntity> getstudents(@PathVariable long id) {
 		Optional<studentEntity> student = repo.findById(id);
@@ -68,9 +70,9 @@ public class studentController {
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+
 //	url :http://localhost:1111/api/delstudents/4
-		
+
 	@DeleteMapping("/delstudents/{id}")
 	public ResponseEntity<studentEntity> deleteStudents(@PathVariable long id) {
 		Optional<studentEntity> student = repo.findById(id);
